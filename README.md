@@ -1,6 +1,6 @@
-# dumbdeveloperblog
+# VEMN-Boilerplate
 
-> A blog about being a dumb dumb in a very smart industry
+> VEMN (Vue, Express, Mongo, Node) boilerplate code using ES6, Webpack, and hot code reload.
 
 ## Build Setup
 
@@ -14,5 +14,3 @@ npm start
 # build for production with minification
 npm run build
 ```
-
-For detailed explanation on how things work, consult the [docs for vue-loader](http://vuejs.github.io/vue-loader).
