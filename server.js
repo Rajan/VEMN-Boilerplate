@@ -18,6 +18,7 @@ app.use(function (err, req, res, next) {
   }
 });
 
+// Check for dev environment and switch to webpack hot-reload
 if(process.env.NODE_ENV === 'development') {
   var webpackDevMiddleware = require('webpack-dev-middleware');
   webpackHotMiddleware = require('webpack-hot-middleware');
@@ -36,6 +37,8 @@ if(process.env.NODE_ENV === 'development') {
 } else {
   app.use(express.static(__dirname + '/public'));
 }
+
+app.use('/api/posts', require('./controllers/posts-controller'));
 
 app.get('/*', (req, res) => {
   res.sendFile(__dirname + '/index.html');

@@ -1,10 +1,16 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router';
-
-// Pages - Containers
-import Home from './pages/Home.vue'
+import Vuex from 'vuex';
 
 Vue.use(VueRouter);
+Vue.use(Vuex);
+
+// Stores
+import store from './stores';
+
+// Pages - Containers
+import Home from './pages/Home.vue';
+import PostShow from './pages/PostShow.vue';
 
 // Array of routes
 const routes = [
@@ -12,6 +18,11 @@ const routes = [
     path: '/',
     name: 'homeRoute',
     component: Home
+  },
+  {
+    path: '/post/:id',
+    name: 'postShow',
+    component: PostShow
   }
 ]
 
@@ -22,5 +33,6 @@ const router = new VueRouter({
 });
 
 const app = new Vue({
+  store,
   router
 }).$mount('#app');
