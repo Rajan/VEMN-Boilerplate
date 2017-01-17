@@ -1,3 +1,4 @@
+require('dotenv').config();
 var express = require('express');
 var app = express();
 var bodyParser = require('body-parser');
@@ -38,7 +39,8 @@ if(process.env.NODE_ENV === 'development') {
   app.use(express.static(__dirname + '/public'));
 }
 
-app.use('/api/posts', require('./controllers/posts-controller'));
+app.use('/api/auth', require('./controllers/auth-controller'));
+app.use('/api/posts', expressJWT({secret: secret}).unless({path: ['/api/posts', '/api/posts/:id'], method: 'GET'}), require('./controllers/posts-controller'));
 
 app.get('/*', (req, res) => {
   res.sendFile(__dirname + '/index.html');

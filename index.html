@@ -3,10 +3,16 @@
   <head>
     <meta charset="utf-8">
     <title>dumbdeveloperblog</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://unpkg.com/purecss@0.6.2/build/pure-min.css" integrity="sha384-UQiGfs9ICog+LwheBSRCt1o5cbyKIHbwjWscjemyBMT9YCUMZffs6UqUTd0hObXD" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://unpkg.com/purecss@0.6.2/build/grids-responsive-min.css">
   </head>
   <body>
     <div id="app">
-      <router-view></router-view>
+      <div id="layout">
+        <navbar></navbar>
+        <router-view></router-view>
+      </div>
     </div>
     <script src="/public/build.js"></script>
   </body>

@@ -1,33 +1,19 @@
 <template>
-  <div>
-    <h1>Dumb Developer Blog</h1>
-    <form @submit.prevent="addPost(newPost)">
-      <div>
-        <label>Title</label>
-        <input v-model="newPost.title" type="text" placeholder="Enter post title">
+  <section class="pure-g">
+    <div class="pure-u-sm-1-1">
+      <div class="header">
+        <h1>Dumb Developer Blog</h1>
       </div>
-      <div>
-        <label>Author</label>
-        <input v-model="newPost.author" type="text" placeholder="Enter post author">
+      <div class="content">
+        <post-list :posts="posts"></post-list>
       </div>
-      <div>
-        <label>Body</label>
-        <textarea v-model="newPost.content" col="20" row="20" placeholder="Enter post content"></textarea>
-      </div>
-      <div>
-        <input type="submit">
-      </div>
-    </form>
-    <ul>
-      <li v-for="post in posts">
-        <router-link :to="{name: 'postShow', params: {id: post._id}}"><h3>{{post.title}}</h3></router-link>
-      </li>
-    </ul>
-  </div>
+    </div>
+  </section>
 </template>
 
 <script>
   import { mapGetters, mapActions } from 'vuex';
+  import PostList from '../components/PostList.vue';
 
   export default {
     name: 'homePage',
@@ -43,9 +29,9 @@
         }
       }
     },
-    methods: mapActions([
-      'addPost'
-    ]),
+    components: {
+      PostList
+    },
     created() {
       this.$store.dispatch('getAllPosts');
     }

@@ -11,18 +11,32 @@ import store from './stores';
 // Pages - Containers
 import Home from './pages/Home.vue';
 import PostShow from './pages/PostShow.vue';
+import Admin from './pages/Admin.vue';
+
+// Components
+import Navbar from './components/Navbar.vue';
+
+// Map of Components
+const components = {
+  Navbar
+}
 
 // Array of routes
 const routes = [
   {
     path: '/',
-    name: 'homeRoute',
+    name: 'home',
     component: Home
   },
   {
     path: '/post/:id',
     name: 'postShow',
     component: PostShow
+  },
+  {
+    path: '/admin',
+    name: 'admin',
+    component: Admin
   }
 ]
 
@@ -34,5 +48,6 @@ const router = new VueRouter({
 
 const app = new Vue({
   store,
-  router
+  router,
+  components
 }).$mount('#app');
