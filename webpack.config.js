@@ -17,7 +17,7 @@ module.exports = {
     // Webpack 2.0 fixed this mispelling
     new webpack.optimize.OccurrenceOrderPlugin(),
     new webpack.HotModuleReplacementPlugin(),
-    new webpack.NoErrorsPlugin()
+    new webpack.NoEmitOnErrorsPlugin()
   ],
   module: {
     rules: [

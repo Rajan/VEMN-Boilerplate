@@ -1,5 +1,5 @@
 <template>
-  <h1>Dumb Developer Blog</h1>
+  <h1>Dumb Developer Blog One</h1>
 </template>
 
 <script>
