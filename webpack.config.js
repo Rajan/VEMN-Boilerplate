@@ -3,12 +3,12 @@ var webpack = require('webpack')
 
 module.exports = {
   entry: [
-    'webpack-hot-middleware/client',
+    // 'webpack-hot-middleware/client',
     './src/main.js'
   ],
   output: {
     path: path.resolve(__dirname, './public'),
-    publicPath: '/public/',
+    publicPath: 'http://localhost:8080/public/',
     filename: 'build.js'
   },
   plugins: [
@@ -46,16 +46,38 @@ module.exports = {
         options: {
           name: '[name].[ext]?[hash]'
         }
+      },
+      {
+        test: /\.scss$/,
+        use: [{
+          loader: "style-loader"
+        }, {
+          loader: "css-loader"
+        }, {
+          loader: "sass-loader",
+          options: {
+            includePaths: ["src/assets/scss", "src/assets/css"]
+          }
+        }]
+      },
+      {
+        test: /\.css$/,
+        use: [
+          'css-loader',
+          'style-loader'
+        ]
       }
     ]
   },
   resolve: {
     alias: {
-      'vue$': 'vue/dist/vue.common.js'
+      'vue$': 'vue/dist/vue.common.js',
+      styles: path.resolve(__dirname, '/src/assets/scss/main.scss')
     }
   },
   devServer: {
     historyApiFallback: true,
+    publicPath: '/public/',
     noInfo: true
   },
   performance: {

@@ -3,6 +3,9 @@ var app = express();
 var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
 
+var utils = require('loader-utils');
+var sass = require('node-sass');
+
 var expressJWT = require('express-jwt');
 var jwt = require('jsonwebtoken');
 var secret = process.env.JWT_SECRET || 'supersecretcode';
@@ -26,8 +29,10 @@ if(process.env.NODE_ENV === 'development') {
   var compiler = webpack(config);
 
   app.use(webpackDevMiddleware(compiler, {
-    publicPath: config.output.publicPath,
-    stats: {colors: true}
+    hot: true,
+    publicPath: '/public/',
+    stats: {colors: true},
+    historyApiFallback: true,
   }));
 
   app.use(webpackHotMiddleware(compiler, {
